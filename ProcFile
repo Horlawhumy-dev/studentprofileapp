@@ -1,1 +1,1 @@
-web: gunicorn studentprofile.wsgi --log-file - --log-level debug
+web: gunicorn studentprofile.wsgi 

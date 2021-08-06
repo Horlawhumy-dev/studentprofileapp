@@ -18,7 +18,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-4448=#f(vjdethbfbe&(erh6=(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("YOUR_DEBUG")
 
-ALLOWED_HOSTS = ['http://nameless-wildwood-10532.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
