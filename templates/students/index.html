@@ -1,0 +1,40 @@
+{% extends 'students/base.html'%}
+
+{% block title %} Home Page {% endblock %}
+
+{% block content %} 
+    <h1>Welcome To Student Profile App.</h1>
+    <h2><a href="{% url 'account:form' %}">Add Student</a></h2>
+    {% if students %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Edit Profile</th>
+                    <th>Delete Profile</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                    {% for student in students %}
+                        <tr>
+                            <td>{{ student.id }}</td>
+                            <td>{{student.name}}</td>
+                            <td>{{student.email}}</td>
+                            <td>{{student.phone}}</td>
+                            <td>
+                                <form action="{% url 'account:delete' student.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="submit" value="Delete">
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+            
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

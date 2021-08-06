@@ -1,0 +1,16 @@
+{% extends 'students/base.html'%}
+
+{% block title %} Form Page {% endblock%}
+
+{% block content %} 
+    <h2>
+        <a href="{% url 'students:index' %}">Go back home</a>
+    </h2>
+    <h1>Add Student Profile</h1>
+    <form action="{% url 'account:form' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit"/>
+    </form>
+    
+{% endblock %}
