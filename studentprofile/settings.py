@@ -1,5 +1,7 @@
 import  os
 from pathlib import Path
+import django_heroku
+
 import dj_database_url
 from dotenv import load_dotenv
 
@@ -77,8 +79,8 @@ DATABASES = {
     }
     
 }
-# db_from_env = dj_database_url.config(default='postgres://...', conn_max_age=500)
-# DATABASES['default'].update(db_from_env)
+db_from_env = dj_database_url.config(default='postgres://...', conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -122,3 +124,4 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+django_heroku.settings(locals())
